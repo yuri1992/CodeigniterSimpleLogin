@@ -33,13 +33,12 @@ class Simplelogin extends CI_Controller {
 		{
 			$data['email'] = $this->input->post('email');
 			$data['password_enc'] = sha1($this->input->post('password'));
-			if ($this->customers_model->check_customer_login($data)) {
+			if ($this->login_model->is_login_valid($data)) {
 				$this->set_session_login($data);
 				redirect('/user/panel');
 			}
 		} 
 
-		$this->error_log = $this->lang->line('login_faild');
 		$arr = array('customers/login.php'=>$data);
 		$this->base_template($arr);
 	}

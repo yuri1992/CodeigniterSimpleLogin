@@ -48,7 +48,7 @@
 	}
 	function on_success_session($redirect='/customers/customer_panel') {
 		$stat = false;
-		echo __logged_in();
+
 	 	if (__logged_in()) {
 	 		redirect($redirect);
 	 		return true;
